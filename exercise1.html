@@ -10,23 +10,26 @@
     <div id="d2" style="width: 100px; margin: 1px">&nbsp;</div>
     <div id="d3" style="width: 100px; margin: 1px">&nbsp;</div>
     <button id="btn">Change Color</button>
-    <div style="margin-top: 1em;">
+    <br />
     <a  href="index.html">back</a>
-    <h3>Reflections</h3>
 
+  <h3>Reflections</h3>
+  <p>
+
+    
+  </p>
     <script>
     const divs = document.querySelectorAll("div")
   
       for(let i = 0; i<3; i++){
-        console.log(divs[i])
         divs[i].style.backgroundColor = "blue"
       }
       document.getElementById("btn").onclick = ()=> {
-        document.querySelector("#d1").style.backgroundColor = "red"
+        divs[0].style.backgroundColor = "red"
         divs[1].style.backgroundColor = "green"
         divs[2].style.backgroundColor = "purple"
       }
     </script>
-    </div>
+  
   </body>
 </html>

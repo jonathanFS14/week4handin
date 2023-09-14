@@ -4,9 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .my-div {width: 25px; height: 25px;background-color:red; margin:1px;}
+      </style>
+     
 </head>
 <body>
-    
-    <script></script>
+    <div id="outer">
+    <div id="id-1" class="my-div"></div>
+        <div id="id-2" class="my-div"></div>
+        <div id="id-3" class="my-div"></div>
+        <div id="id-4" class="my-div"></div>
+        <div id="id-5" class="my-div"></div>
+        <div id="id-6" class="my-div"></div>
+        <div id="id-7" class="my-div"></div>
+        <div id="id-8" class="my-div"></div>
+        <div id="id-9" class="my-div"></div>
+        <div id="id-10" class="my-div"></div>
+    </div>
+    <p id="boxid"></p>
+    <a  href="index.html">back</a>
+
+    <h3>Reflections</h3>
+    <p>
+        I was able to get the id of the div that was clicked on by
+         using the event object and the target property. I then used
+          the innerText property to change the text of the paragraph
+           element.
+    </p>
+    <script>
+       document.getElementById("outer").onclick = (evt) => {
+            const id = evt.target.id;
+            document.getElementById("boxid").innerText = id;
+        }
+    </script>
 </body>
 </html>

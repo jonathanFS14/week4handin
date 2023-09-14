@@ -1,12 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    
-    <script></script>
-</body>
+  </head>
+  <body>
+    <br />
+    <br />
+
+    <select id="car-selector"></select>
+    <h2>Selected Brand</h2>
+    <h4 id="car-make"></h4>
+
+    <a href="index.html">back</a>
+
+    <h3>Reflections</h3>
+    <p></p>
+
+    <script>
+      const cars = ["Ford", "WW", "Toyota", "Volvo"];
+      const selectElement = document.getElementById("car-selector");
+
+      cars.forEach((brand) => {
+        const option = document.createElement("option");
+        option.value = brand;
+        option.textContent = brand;
+        selectElement.appendChild(option);
+      });
+
+      selectElement.addEventListener("change", (event) => {
+        document.getElementById("car-make").innerText = event.target.value;
+      });
+    </script>
+  </body>
 </html>

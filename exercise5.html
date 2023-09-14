@@ -1,13 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Year</th>
+          <th id="header-make">Make</th>
+          <th>Model</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+
+    <div>
+      <label for="filter-price">Price &nbsp;</label><input id="filter-price" />
+      <button id="btn-filter-price" class="btn btn-outline-dark">
+        Price less than
+      </button>
+      <button id="btn-clear-filter" class="btn btn-outline-dark">
+        Clear Filter
+      </button>
+    </div>
+
+    <a href="index.html">back</a>
+
+    <h3>Reflections</h3>
+    <p></p>
+
     <script>
-        
+      const cars = [
+        { id: 1, year: 1997, make: "Ford", model: "E350", price: 3000 },
+        { id: 2, year: 1999, make: "Chevy", model: "Venture", price: 4900 },
+        { id: 3, year: 2000, make: "Chevy", model: "Venture", price: 5000 },
+        {
+          id: 4,
+          year: 1996,
+          make: "Jeep",
+          model: "Grand Cherokee",
+          price: 4799,
+        },
+        { id: 5, year: 2005, make: "Volvo", model: "V70", price: 44799 },
+      ];
+
+      function makerows(array) {
+        const tableRows = array
+          .map((car) => {
+            return `<tr>
+    <td>${car.id}</td>
+    <td>${car.year}</td>
+    <td>${car.make}</td>
+    <td>${car.model}</td>
+    <td>${car.price}</td>
+    </tr>`;
+          })
+          .join("")
+        document.getElementById("tbody").innerHTML = tableRows;
+      }
+
+      makerows(cars);
+
+      document.getElementById("btn-filter-price").onclick = () => {
+        const price = document.getElementById("filter-price").value;
+        const filteredCars = cars.filter((car) => car.price < price);
+        makerows(filteredCars);
+      };
+
+      document.getElementById("btn-clear-filter").onclick = function () {
+        makerows(cars);
+      };
+      let sortOrderMake = 1;
+      document.getElementById("header-make").onclick = function () {
+        const sortedCars = cars.sort((a, b) => {
+          let sortResult = 0;
+          if (a.make < b.make) sortResult = -1;
+          if (a.make > b.make) sortResult = 1;
+          sortResult *= sortOrderMake;
+          return sortResult;
+        });
+        sortOrderMake *= -1;
+        makerows(sortedCars);
+      }
     </script>
-</body>
+  </body>
 </html>
