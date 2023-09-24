@@ -19,7 +19,6 @@ window.addEventListener("load", async () => {
         const target = evt.target
         const isMenuBtn = target.tagName === "BUTTON" && target.id.startsWith("menu-btn-")
         if (!isMenuBtn) {
-            console.log("Not a menu button, Remove this line when you know what is going on here")
             return
         }
         if (target.id === "menu-btn-about") {
